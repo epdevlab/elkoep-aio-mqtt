@@ -1,11 +1,11 @@
-"""Setup script for elkoep-mqtt package."""
+"""Setup script for elkoep-aio-mqtt package."""
 
 from setuptools import find_packages, setup
 
 setup(
-    name="elkoep-mqtt",
+    name="elkoep-aio-mqtt",
     version="0.2.33.beta.30",
-    url="https://github.com/epdevlab/elkoep-mqtt",
+    url="https://github.com/epdevlab/elkoep-aio-mqtt",
     license="MIT",
     author="Elko EP s.r.o.",
     author_email="epdevlab@gmail.com",
