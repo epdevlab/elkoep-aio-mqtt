@@ -1,9 +1,9 @@
-# Elkoep-mqtt
+# elkoep-aio-mqtt
 
 A Python library that handles communication with inels over mqtt
 [iNELS](https://www.inels.com/) by ElkoEP company.
 
-[Pypi](https://pypi.org/project/elkoep-mqtt/)
+[Pypi](https://pypi.org/project/elkoep-aio-mqtt/)
 
 # Requirements
 
@@ -14,7 +14,7 @@ For smooth using you need to have Python 3.9 or higher.
 Use PyPI repository
 
 ```
-pip install elkoep-mqtt
+pip install elkoep-aio-mqtt
 ```
 
 # Testing
@@ -104,4 +104,4 @@ Supported bus devices
 - GRT3-70 (180)
 - GRT3-270 (180)
 - BITS (bits)
-- INTEGETS (integers)
+- INTEGERS (integers)
