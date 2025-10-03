@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="elkoep-aio-mqtt",
-    version="0.2.33.beta.31",
+    version="0.1.0.beta.1",
     url="https://github.com/epdevlab/elkoep-aio-mqtt",
     license="MIT",
     author="Elko EP s.r.o.",
@@ -19,7 +19,10 @@ setup(
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
     ],
     packages=find_packages(),
     test_suite="unittest",

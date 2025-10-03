@@ -1,6 +1,12 @@
 [build-system]
-requires = ["setuptools>=63.0", "wheel", "paho-mqtt==1.6.1", "attrs>=21.2.0"]
+requires = ["setuptools>=63.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=1.2.0",
+]
 
 [urls]
 "Homepage" = "https://github.com/epdevlab/elkoep-mqtt"
@@ -45,7 +51,7 @@ indent-width = 4
 
 # The minimum Python version to target, e.g., when considering automatic code upgrades, 
 # like rewriting type annotations
-target-version = "py312"
+target-version = "py310"
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101", "E712"]
@@ -83,9 +89,12 @@ line-ending = "auto"
 max-complexity = 10
 
 # https://github.com/home-assistant/core/blob/dev/mypy.ini
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
 [tool.mypy]
 exclude = ["venv", ".venv", "tests"]
-python_version = "3.12"
+python_version = "3.10"
 platform = "linux"
 install_types = true
 non_interactive = true

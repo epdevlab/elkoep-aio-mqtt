@@ -94,15 +94,6 @@ class Device(object):
         return self.__unique_id
 
     @property
-    def is_subscribed(self) -> bool:
-        """Is device subscribed to mqtt
-
-        Returns:
-            bool: True/False
-        """
-        return self.__mqtt.is_subscribed(self.__state_topic)
-
-    @property
     def device_class(self) -> str:
         """Get device class of the device
 
@@ -255,7 +246,7 @@ class Device(object):
                 self.__device_type,
                 self.__inels_type,
                 self.__device_class,
-                inels_value=val.decode() if val is not None else None,  # type: ignore[attr-defined]
+                inels_value=val if val is not None else None,  # type: ignore[attr-defined]
             )
             return LastHAValue(device_value.ha_value)
 
@@ -275,7 +266,7 @@ class Device(object):
             self.__device_type,
             self.__inels_type,
             self.__device_class,
-            inels_value=(val.decode() if val is not None else None),
+            inels_value=(val if val is not None else None),
             last_value=LastHAValue(self.__values.ha_value) if self.__values else self.last_values,
         )
         self.__state = (
@@ -297,7 +288,7 @@ class Device(object):
         val = self.__mqtt.messages().get(self.state_topic)
         return self.__get_value(val)
 
-    def set_ha_value(self, value: Any) -> bool:
+    async def set_ha_value(self, value: Any) -> bool:
         """Set HA value. Will automaticaly convert HA value
         into the inels value format.
 
@@ -315,7 +306,7 @@ class Device(object):
         )
 
         # This is a workaround to the last value before turn off since ramp increments are built into mqtt events
-        if hasattr(value, 'light_coa_toa'):
+        if hasattr(value, "light_coa_toa"):
             _values = self.__values
             for i in range(len(_values.ha_value.light_coa_toa)):
                 _values.ha_value.light_coa_toa[i].brightness_before_off = value.light_coa_toa[i].brightness_before_off
@@ -323,7 +314,7 @@ class Device(object):
 
         ret = False
         if self.__set_topic is not None:
-            ret = self.__mqtt.publish(self.__set_topic, dev.inels_set_value)
+            ret = await self.__mqtt.publish(self.__set_topic, dev.inels_set_value)
 
         return ret
 

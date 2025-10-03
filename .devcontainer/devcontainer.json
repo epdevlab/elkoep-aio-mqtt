@@ -6,8 +6,8 @@
     "dockerfile": "Dockerfile",
     "context": "..",
     "args": {
-      // Update 'VARIANT' to pick a Python version: 3, 3.6, 3.7, 3.8, 3.9
-      "VARIANT": "3.9",
+      // Update 'VARIANT' to pick a Python version: 3, 3.13
+      "VARIANT": "3.13",
       // Options
       "INSTALL_NODE": "true",
       "NODE_VERSION": "lts/*"
@@ -50,7 +50,7 @@
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "/usr/local/bin/black",
     "python.linting.flake8Path": "/usr/local/bin/flake8",
-    "python.linting.pycodestylePath": "/usr/local/lib/python3.9/site-packages/pydocstyle",
+    "python.linting.pycodestylePath": "/usr/local/lib/python3.13/site-packages/pydocstyle",
     "python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
     "python.linting.pylintPath": "/usr/local/bin/pylint"
   },

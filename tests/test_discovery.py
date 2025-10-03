@@ -20,7 +20,7 @@ def discovery(mqtt_mock):
     return InelsDiscovery(mqtt=mqtt_mock)
 
 
-def test_discovery_successful(mqtt_mock, discovery):
+async def test_discovery_successful(mqtt_mock, discovery):
     """Test successful discovery of devices."""
     mqtt_mock.discovery_all.return_value = {"10e97f8b7d30/01/01E8": "data", "10e97f8b7d30/03/03E8": "data"}
     expected_devices = [
@@ -28,13 +28,13 @@ def test_discovery_successful(mqtt_mock, discovery):
         Device(mqtt_mock, "inels/status/10e97f8b7d30/03/03E8"),
     ]
 
-    discovered_devices = discovery.discovery()
+    discovered_devices = await discovery.start()
     assert len(discovered_devices) == len(expected_devices)
     assert all(d.state_topic == e.state_topic for d, e in zip(discovered_devices, expected_devices, strict=True))
     mqtt_mock.discovery_all.assert_called_once()
 
 
-def test_discovery_class_com_test(mqtt_mock, discovery):
+async def test_discovery_class_com_test(mqtt_mock, discovery):
     """Test discovery of devices when the handler has a COMM_TEST method."""
     mqtt_mock.discovery_all.return_value = {
         "10e97f8b7d30/01/19E8": None,
@@ -42,12 +42,12 @@ def test_discovery_class_com_test(mqtt_mock, discovery):
     }
     expected_devices = []
 
-    discovered_devices = discovery.discovery()
+    discovered_devices = await discovery.start()
     assert len(discovered_devices) == len(expected_devices)
     assert mqtt_mock.discovery_all.call_count == 2
 
 
-def test_discovery_class_without_com_test(mqtt_mock, discovery):
+async def test_discovery_class_without_com_test(mqtt_mock, discovery):
     """Test discovery of devices when the handler does not have a COMM_TEST method."""
     mqtt_mock.discovery_all.return_value = {
         "2C6A6F1036B3/108/02A89F": None,
@@ -57,26 +57,26 @@ def test_discovery_class_without_com_test(mqtt_mock, discovery):
     }
     expected_devices = []
 
-    discovered_devices = discovery.discovery()
+    discovered_devices = await discovery.start()
     assert len(discovered_devices) == len(expected_devices)
     mqtt_mock.discovery_all.assert_called_once()
 
 
-def test_discovery_with_retry(mqtt_mock, discovery):
+async def test_discovery_with_retry(mqtt_mock, discovery):
     """Test discovery with retry logic when initial discovery fails."""
     mqtt_mock.discovery_all.side_effect = [
         {"10e97f8b7d30/01/01E8": None},  # First call returns None, triggers retry
         {"10e97f8b7d30/03/03E8": "data"},  # Second call successful
     ]
 
-    discovered_devices = discovery.discovery()
+    discovered_devices = await discovery.start()
     assert len(discovered_devices) == 1
     assert mqtt_mock.discovery_all.call_count == 2
 
     mqtt_mock.publish.assert_called_with("inels/set/10e97f8b7d30/01/01E8", "08\n00\n")
 
 
-def test_discovery_with_assumed_state_devices(mqtt_mock, discovery):
+async def test_discovery_with_assumed_state_devices(mqtt_mock, discovery):
     """Test discovery where devices are assumed to be in a certain state."""
     mqtt_mock.discovery_all.return_value = {
         "10e97f8b7d30/01/01E8": None,  # disregard
@@ -85,12 +85,12 @@ def test_discovery_with_assumed_state_devices(mqtt_mock, discovery):
         "10e97f8b7d30/18/19E8": None,  # Device is in assumed state list
     }
 
-    discovered_devices = discovery.discovery()
+    discovered_devices = await discovery.start()
     assert len(discovered_devices) == 2
 
 
-def test_discovery_no_devices_found(mqtt_mock, discovery):
+async def test_discovery_no_devices_found(mqtt_mock, discovery):
     """Test discovery with no devices found."""
     mqtt_mock.discovery_all.return_value = {}
-    assert discovery.discovery() == []
+    assert await discovery.start() == []
     assert len(discovery.devices) == 0

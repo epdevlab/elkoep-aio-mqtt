@@ -285,10 +285,10 @@ TOPIC_FRAGMENTS = {
 }
 
 GW_CONNECTED = {
-    b'{"status":true}': True,
-    b'{"status":false}': False,
-    b'{"status": true}': True,
-    b'{"status": false}': False,
+    '{"status":true}': True,
+    '{"status":false}': False,
+    '{"status": true}': True,
+    '{"status": false}': False,
 }
 
 DEVICE_CONNECTED = {
@@ -316,22 +316,5 @@ BUS_SENSOR_ERRORS = {
     0xF: BUS_SENSOR_NO_SENSOR,
 }
 
-# MQTT/INELS CONSTANTS
-
-MQTT_TRANSPORTS = {"tcp", "websockets"}
-
-MQTT_TIMEOUT: Final = "timeout"
-MQTT_HOST: Final = "host"
-MQTT_USERNAME: Final = "username"
-MQTT_PASSWORD: Final = "password"
-MQTT_PORT: Final = "port"
-MQTT_CLIENT_ID: Final = "client_id"
-MQTT_PROTOCOL: Final = "protocol"
-MQTT_TRANSPORT: Final = "transport"
-PROTO_31 = "3.1"
-PROTO_311 = "3.1.1"
-PROTO_5 = 5
-
 VERSION = "0.1.0"
-
 MANUFACTURER: Final = "ELKO EP s.r.o"

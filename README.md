@@ -1,30 +1,14 @@
 # elkoep-aio-mqtt
 
-A Python library that handles communication with inels over mqtt
-[iNELS](https://www.inels.com/) by ElkoEP company.
+A library that provides a wrapper around Home Assistant's MQTT component for communication with [iNELS](https://www.inels.com/) devices by ElkoEP company.
+
+This library is designed to run exclusively within Home Assistant and leverages Home Assistant's built-in MQTT functionality.
 
 [Pypi](https://pypi.org/project/elkoep-aio-mqtt/)
 
-# Requirements
-
-For smooth using you need to have Python 3.9 or higher.
-
 # Install
 
-Use PyPI repository
-
-```
-pip install elkoep-aio-mqtt
-```
-
-# Testing
-
-I use [tox](https://tox.readthedocs.io) for testing.
-
-```
-$ pip install tox
-
-```
+This library is designed to be installed as a dependency for the iNELS integration for Home Assistant. It is not intended to run as a standalone.
 
 # Development status
 

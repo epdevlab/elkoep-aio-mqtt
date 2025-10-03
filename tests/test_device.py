@@ -3,10 +3,7 @@ from unittest.mock import MagicMock
 import pytest
 
 from inelsmqtt import InelsMqtt
-from inelsmqtt.const import (
-    MANUFACTURER,
-    VERSION,
-)
+from inelsmqtt.const import MANUFACTURER, VERSION
 from inelsmqtt.devices import Device, DeviceInfo
 from inelsmqtt.utils.common import SimpleRelay, WarmLight, new_object
 from inelsmqtt.utils.core import DUMMY_VAL
@@ -17,7 +14,7 @@ TEST_STATE_TOPIC = "inels/status/10e97f8b7d30/02/02E8"
 @pytest.fixture
 def mqtt_mock():
     mqtt = MagicMock(spec=InelsMqtt)
-    mqtt.last_value.return_value = b"02\n00\n"
+    mqtt.last_value.return_value = "02\n00\n"
     return mqtt
 
 
@@ -44,17 +41,17 @@ def test_device_initialization(device, mqtt_mock):
 
 def test_device_availability(device):
     # Simulate an update to the device value
-    device.update_value(b"02\n01\n")
+    device.update_value("02\n01\n")
 
     # Simulate different gateway and device statuses
     device.mqtt.messages.return_value.get.side_effect = [
-        b'{"status": true}',
+        '{"status": true}',
         "on\n",
-        b'{"status": true}',
+        '{"status": true}',
         "off\n",
-        b'{"status": false}',
+        '{"status": false}',
         "on\n",
-        b'{"status": false}',
+        '{"status": false}',
         "off\n",
     ]
 
@@ -76,16 +73,16 @@ def test_device_last_values(device, mqtt_mock):
 
 
 def test_update_value(device):
-    device.update_value(b"02\n01\n")
+    device.update_value("02\n01\n")
     assert device.state.simple_relay[0].is_on
 
-    device.update_value(b"02\n00\n")
+    device.update_value("02\n00\n")
     assert not device.state.simple_relay[0].is_on
 
 
-def test_device_set_ha_value(device):
+async def test_device_set_ha_value(device):
     simple_relay = new_object(simple_relay=[SimpleRelay(is_on=True)])
-    device.set_ha_value(simple_relay)
+    await device.set_ha_value(simple_relay)
     device.mqtt.publish.assert_called_once_with("inels/set/10e97f8b7d30/02/02E8", "01\n00\n00\n")
 
 
@@ -113,7 +110,7 @@ def test_device_callbacks(device):
 
 
 def test_device_callback_availability(device):
-    device.mqtt.messages.return_value.get.side_effect = [b"02\n01\n", b"02\n00\n"]
+    device.mqtt.messages.return_value.get.side_effect = ["02\n01\n", "02\n00\n"]
 
     callback = MagicMock()
     device.add_ha_callback("simple_relay", 0, callback)
