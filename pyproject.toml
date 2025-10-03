@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elkoep-aio-mqtt"
-version = "0.1.0.beta.1"
+version = "0.1.0.beta.2"
 description = "Python library for iNELS mqtt protocol"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -74,7 +74,7 @@ line-length = 120
 # Define the number of spaces used for indentation, aligning with Black's style.
 indent-width = 4
 
-# The minimum Python version to target, e.g., when considering automatic code upgrades, 
+# The minimum Python version to target, e.g., when considering automatic code upgrades,
 # like rewriting type annotations
 target-version = "py310"
 
@@ -87,7 +87,7 @@ target-version = "py310"
 # Activate Security Rules (S) to replace bandit
 # Enable the isort rules (I) to replace isort
 # flake8-bugbear (B)
-select = ["F", "E4", "E7", "E9", "W", "S", "I", "B"] 
+select = ["F", "E4", "E7", "E9", "W", "S", "I", "B"]
 ignore = ["F841"] # List any rules to be ignored, currently empty.
 
 # Allow auto-fixing of all enabled rules when using the `--fix` option.

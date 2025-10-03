@@ -206,6 +206,11 @@ class InelsMqtt:
         """Unsubscribe listeners."""
         self.__listeners.clear()
 
+    async def unsubscribe_topics(self) -> None:
+        """Unsubscribe from all MQTT topics."""
+        for topic in list(self._substates.keys()):
+            await self.unsubscribe(topic)
+
     def __notify_listeners(self, stripped_topic: str, is_connected_message: bool) -> None:
         """Notify listeners for a specific topic."""
         if len(self.__listeners[stripped_topic]) > 0:
