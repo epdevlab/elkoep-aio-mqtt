@@ -34,7 +34,7 @@ class InelsMqtt:
     def __init__(
         self,
         publish: Callable[
-            [str, str | bytes | int | float | None, int | None, bool | None],
+            [str, str, int, bool],
             Coroutine[Any, Any, None],
         ],
         subscribe: Callable[
