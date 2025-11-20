@@ -6,7 +6,7 @@ import logging
 from dataclasses import dataclass
 from typing import Any, List, Optional, Protocol
 
-from inelsmqtt.protocols import cu3, elanrf
+from inels_aio_mqtt.protocols import cu3, elanrf
 
 _LOGGER = logging.getLogger(__name__)
 

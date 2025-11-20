@@ -3,12 +3,12 @@ from __future__ import annotations
 from enum import IntEnum
 from typing import TYPE_CHECKING, Any, List
 
-from inelsmqtt.utils.common import SettableAttribute
+from inels_aio_mqtt.utils.common import SettableAttribute
 
 if TYPE_CHECKING:
-    from inelsmqtt.utils.core import DeviceValue
+    from inels_aio_mqtt.utils.core import DeviceValue
 
-from inelsmqtt.const import (
+from inels_aio_mqtt.const import (
     AIN,
     BATTERY,
     BLUE,
@@ -55,7 +55,7 @@ from inelsmqtt.const import (
     Climate_modes,
     Shutter_state,
 )
-from inelsmqtt.utils.common import (
+from inels_aio_mqtt.utils.common import (
     DataDict,
     Formatter,
     RGBLight,

@@ -2,10 +2,10 @@
 
 import logging
 
-from inelsmqtt import InelsMqtt
-from inelsmqtt.const import GATEWAY
-from inelsmqtt.devices import Device
-from inelsmqtt.utils.core import INELS_ASSUMED_STATE_DEVICES, ProtocolHandlerMapper
+from inels_aio_mqtt import InelsMqtt
+from inels_aio_mqtt.const import GATEWAY
+from inels_aio_mqtt.devices import Device
+from inels_aio_mqtt.utils.core import INELS_ASSUMED_STATE_DEVICES, ProtocolHandlerMapper
 
 _LOGGER = logging.getLogger(__name__)
 

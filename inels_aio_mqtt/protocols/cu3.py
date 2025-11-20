@@ -5,9 +5,9 @@ from enum import IntEnum
 from typing import TYPE_CHECKING, Any, Dict, List
 
 if TYPE_CHECKING:
-    from inelsmqtt.utils.core import DeviceValue
+    from inels_aio_mqtt.utils.core import DeviceValue
 
-from inelsmqtt.const import (
+from inels_aio_mqtt.const import (
     ADC3_60M,
     AIN,
     ALERT,
@@ -114,7 +114,7 @@ from inelsmqtt.const import (
     Climate_modes,
     Shutter_state,
 )
-from inelsmqtt.utils.common import (
+from inels_aio_mqtt.utils.common import (
     AOUTLight,
     Bit,
     DALILight,

@@ -2,9 +2,9 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from inelsmqtt import InelsMqtt
-from inelsmqtt.devices import Device
-from inelsmqtt.discovery import InelsDiscovery
+from inels_aio_mqtt import InelsMqtt
+from inels_aio_mqtt.devices import Device
+from inels_aio_mqtt.discovery import InelsDiscovery
 
 
 @pytest.fixture

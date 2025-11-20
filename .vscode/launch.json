@@ -13,10 +13,10 @@
             }
         },
         {
-            "name": "Python: Module - inelsmqtt.utils.core",
+            "name": "Python: Module - inels_aio_mqtt.utils.core",
             "type": "python",
             "request": "launch",
-            "module": "inelsmqtt.utils.core",
+            "module": "inels_aio_mqtt.utils.core",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"
         },

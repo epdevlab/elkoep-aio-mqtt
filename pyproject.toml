@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elkoep-aio-mqtt"
-version = "0.1.0.beta.4"
+version = "0.1.0.beta.5"
 description = "Python library for iNELS mqtt protocol"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -25,10 +25,10 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["inelsmqtt*"]
+include = ["inels_aio_mqtt*"]
 
 [tool.setuptools.package-data]
-inelsmqtt = ["py.typed"]
+inels_aio_mqtt = ["py.typed"]
 
 [project.optional-dependencies]
 test = [
@@ -37,8 +37,8 @@ test = [
 ]
 
 [urls]
-"Homepage" = "https://github.com/epdevlab/elkoep-mqtt"
-"Bug Tracker" = "https://github.com/epdevlab/elkoep-mqtt/issues"
+"Homepage" = "https://github.com/epdevlab/elkoep-aio-mqtt"
+"Bug Tracker" = "https://github.com/epdevlab/elkoep-aio-mqtt/issues"
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.

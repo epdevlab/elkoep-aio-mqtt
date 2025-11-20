@@ -3,9 +3,9 @@ import time
 from enum import Enum
 from typing import Any, Callable, List, Tuple
 
-from inelsmqtt import InelsMqtt
-from inelsmqtt.devices import Device
-from inelsmqtt.utils.common import SettableAttribute, new_object
+from inels_aio_mqtt import InelsMqtt
+from inels_aio_mqtt.devices import Device
+from inels_aio_mqtt.utils.common import SettableAttribute, new_object
 
 # logging.basicConfig(
 #     level=logging.DEBUG,

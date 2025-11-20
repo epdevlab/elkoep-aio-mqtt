@@ -2,11 +2,11 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from inelsmqtt import InelsMqtt
-from inelsmqtt.const import MANUFACTURER, VERSION
-from inelsmqtt.devices import Device, DeviceInfo
-from inelsmqtt.utils.common import SimpleRelay, WarmLight, new_object
-from inelsmqtt.utils.core import DUMMY_VAL
+from inels_aio_mqtt import InelsMqtt
+from inels_aio_mqtt.const import MANUFACTURER, VERSION
+from inels_aio_mqtt.devices import Device, DeviceInfo
+from inels_aio_mqtt.utils.common import SimpleRelay, WarmLight, new_object
+from inels_aio_mqtt.utils.core import DUMMY_VAL
 
 TEST_STATE_TOPIC = "inels/status/10e97f8b7d30/02/02E8"
 

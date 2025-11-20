@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from operator import itemgetter
 from typing import Any, Dict, List, Optional, Tuple, TypeAlias, Union
 
-from inelsmqtt import const
+from inels_aio_mqtt import const
 
 
 @dataclass

@@ -2,7 +2,7 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from inelsmqtt import InelsMqtt
+from inels_aio_mqtt import InelsMqtt
 
 
 @pytest.fixture

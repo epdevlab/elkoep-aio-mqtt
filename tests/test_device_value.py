@@ -1,7 +1,7 @@
 import pytest
 
-from inelsmqtt.const import Shutter_state
-from inelsmqtt.utils.common import (
+from inels_aio_mqtt.const import Shutter_state
+from inels_aio_mqtt.utils.common import (
     LightCoaToa,
     Relay,
     RGBLight,
@@ -11,7 +11,7 @@ from inelsmqtt.utils.common import (
     SimpleRelay,
     WarmLight,
 )
-from inelsmqtt.utils.core import DeviceValue, ProtocolHandlerMapper
+from inels_aio_mqtt.utils.core import DeviceValue, ProtocolHandlerMapper
 
 
 class BaseDeviceTestClass:
